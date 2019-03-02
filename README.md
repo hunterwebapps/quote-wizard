@@ -1,25 +1,14 @@
-# Weather Api Test
-https://www.geocod.io for Geocoding
+Prerequisites: node & git
 
-https://darksky.net/dev for weather forcast
+`git clone https://github.com/hunterwebapps/quote-wizard.git`
 
-https://cors-anywhere.herokuapp.com/ is required to bypass cors issue with darksky
+`cd quote-wizard`
 
-## Project setup
-```
-npm install
-```
+`npm i`
 
-Create API keys at `https://www.geocod.io` and `https://darksky.net/dev` and update the `.env` file.
+`npm run serve`
 
-Create a SPA based on the ![mockup](Mockup.png)
+OR
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
+Copy and paste into your terminal:
+`git clone https://github.com/hunterwebapps/quote-wizard.git && cd quote-wizard && npm i && npm run serve`
