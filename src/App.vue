@@ -6,6 +6,7 @@
     </div>
     <h1>Weather Forecast</h1>
     <search-bar @search="handleSearch"></search-bar>
+    <span v-if="!!error" class="text-red">{{ error }}</span>
     {{ address }}
     <hr>
     <current-weather :currently="forecast.currently" :unit="unit"></current-weather>
@@ -44,6 +45,7 @@ export default {
       },
       unit: 'imperial',
       loading: false,
+      error: '',
     };
   },
   watch: {
@@ -61,8 +63,13 @@ export default {
       const encQuery = encodeURIComponent(query);
       const res = await axios.get(`https://api.geocod.io/v1.3/${type}?q=${encQuery}&api_key=${GEOCODIO_API_KEY}`);
       const { results } = res.data;
-      this.coords = results[0].location;
-      this.address = results[0].formatted_address;
+      if (results && results.length) {
+        this.coords = results[0].location;
+        this.address = results[0].formatted_address;
+        this.error = '';
+      } else {
+        this.error = 'No Results';
+      }
       this.loading = false;
     },
     changeUnits(type) {
